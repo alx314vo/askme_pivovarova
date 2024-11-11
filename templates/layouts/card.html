@@ -1,0 +1,28 @@
+{% load static %}
+<article class="card">
+    <div class="card-left">
+      <img src="{% static 'img/cat-in-sun.jpg' %}" alt="Image" class="card-image" />
+      <input type="number" class="card-likes" value={{question.likes}} />
+    </div>
+
+    <div class="card-right">
+      <div class="card-right-content">
+        <h4 class="card-title">
+          <a href={% url "answer" id=question.id %}>MEOW{{ question.title }}</a> 
+        </h4>
+
+        <div class="card-text">{{ question.text }}</div>
+      </div>
+
+      <div class="card-right-bottom">
+        <a href={% url "answer" id=question.id%}>Answer (5)</a>
+
+        <div class="card-tags">
+          Tags:
+          {% for tag in question.tags %}
+          <a href="{% url 'tag' tag_name=tag|lower %}">{{tag}}</a>
+                    {% endfor %}
+        </div>
+      </div>
+    </div>
+  </article>

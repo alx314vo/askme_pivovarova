@@ -1,0 +1,27 @@
+{% extends 'layouts/base.html' %}
+
+{% block style %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+{% endblock %}
+
+{% block title %}
+  <div class="title-bar">
+    <h1>Log in</h1>
+  </div>
+{% endblock %}
+
+{% block content %}
+  <h4 class="error-message">Invalid username or password :(</h4>
+
+  <div class="content">
+    <div class="ask-fields">
+      <h3>Login:</h3>
+      <textarea class="login-form-input" type="text"></textarea>
+      <h3>Password:</h3>
+      <textarea class="password-form-input" type="Password"></textarea>
+      <a href={% url "home" %} class="search-form-button">Log in!</a>
+      <a href={% url "reg" %}>create new account</a>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'layouts/base.html' %}
+
+{% block style %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/ask.css' %}" />
+{% endblock %}
+
+{% block title %}
+  <div class="title-bar">
+    <h1>Ask your question</h1>
+    <a href={% url 'hot' %}>&#x1F525 Hot questions</a>
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div class="ask-fields">
+    <h3>Title:</h3>
+    <textarea class="question-heading-form-input" type="text"></textarea>
+    <h3>Text:</h3>
+    <textarea class="question-text-form-input" type="text"></textarea>
+    <h3>Tags:</h3>
+    <textarea class="question-tags-form-input" type="text"></textarea>
+    <button class="search-form-button">Ask!</button>
+  </div>
+{% endblock %}

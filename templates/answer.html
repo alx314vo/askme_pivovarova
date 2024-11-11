@@ -1,0 +1,66 @@
+{% extends 'layouts/base.html' %}
+
+{% block style %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/answer.css' %}" />
+{% endblock %}
+
+{% block title %}
+  <div class="title-bar">
+    <h1>{{question.title}}</h1>
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div class="answer">
+    <div class="question">
+      <p class="question-text">{{question.text}}</p>
+      <div class="question-tags">
+        Tags:
+        {% for tag in question.tags %}
+          <a href="{% url 'tag' tag_name=tag|lower %}">{{tag}}</a>
+                    {% endfor %}
+      </div>
+    </div>
+
+    <div class="answers">
+      <h3>Answers:</h3>
+      <article class="answer-card">
+        <div class="answer-content">
+          <p class="answer-text">I think you should just go for it!</p>
+          <div class="answer-author">- User123</div>
+          <div class="answer-rating">
+            <button class="like-button">👍</button>
+            <span class="rating-count">0</span>
+            <button class="dislike-button">👎</button>
+          </div>
+        </div>
+      </article>
+      <article class="answer-card">
+        <div class="answer-content">
+          <p class="answer-text">Maybe try asking your cat?</p>
+          <div class="answer-author">- CatLover</div>
+          <div class="answer-rating">
+            <button class="like-button">👍</button>
+            <span class="rating-count">0</span>
+            <button class="dislike-button">👎</button>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div class="pagination">
+        <button class="pagebutton">1</button>
+        <button class="pagebutton">2</button>
+        <button class="pagebutton">3</button>
+        <button class="pagebutton">...</button>
+        <button class="pagebutton">10</button>
+      </div>
+
+    <div class="new-answer">
+      <h3>Your answer:</h3>
+      <textarea class="new-answer-input" placeholder="Type your answer here..."></textarea>
+      
+    </div>
+    <button class="submit-answer-button">Send</button>
+  </div>
+{% endblock %}

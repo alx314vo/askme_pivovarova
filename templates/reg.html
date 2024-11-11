@@ -1,0 +1,38 @@
+{% extends 'layouts/base.html' %}
+
+{% block style %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/reg.css' %}" />
+{% endblock %}
+
+{% block title %}
+  <div class="title-bar">
+    <h1>Register</h1>
+  </div>
+{% endblock %}
+
+{% block content %}
+        <h4 class="error-message">Username is already taken :( </h4>
+
+        <div class="content">
+            <div class="ask-fields">
+                <h3>Login:</h3>
+                <textarea class="login-form-input" type="text"> </textarea>
+                <h3>Email:</h3>
+                <textarea class="login-form-input" type="text"> </textarea>
+                <h3>NickName:</h3>
+                <textarea class="login-form-input" type="text"> </textarea>
+                <h3>Password:</h3>
+                <textarea class="login-form-input" type="password"> </textarea>
+                <h3>Repeat password:</h3>
+                <textarea class="password-form-input" type="password"> </textarea>
+                <h3>Upload avatar:</h3>
+                    <h4 class="login-form-input"></h4>
+                    <a class="choose-photo-button">Choose</a>
+                
+                <a href={% url 'login' %} class="search-form-button">Reg!</a>
+                <a href={% url 'login' %}>log in</a>
+            </div>
+
+        </div>
+{% endblock %}

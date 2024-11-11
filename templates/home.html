@@ -1,0 +1,25 @@
+{% extends "layouts/base.html" %}
+
+{% block style %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+
+{% block title %}
+<div class="title-bar">
+  <h1>New questions</h1>
+  <a href={% url 'hot' %}>&#x1F525 Hot questions</a>
+</div>
+{% endblock %}
+
+{% block content %}
+  <div class="cards">
+    {% for question in questions %}
+      {% include "layouts/card.html" %}
+    {% endfor %}
+
+    {% include 'pagination.html' %}
+  </div>
+
+{% endblock %}
