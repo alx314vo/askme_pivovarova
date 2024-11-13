@@ -2,7 +2,7 @@
 <article class="card">
     <div class="card-left">
       <img src="{% static 'img/cat-in-sun.jpg' %}" alt="Image" class="card-image" />
-      <input type="number" class="card-likes" value={{question.likes}} />
+      <input type="number" class="card-likes" value={{ question.question_likes.count }} />
     </div>
 
     <div class="card-right">
@@ -15,13 +15,13 @@
       </div>
 
       <div class="card-right-bottom">
-        <a href={% url "answer" id=question.id%}>Answer (5)</a>
+        <a href={% url "answer" id=question.id%}>show answers</a>
 
         <div class="card-tags">
           Tags:
-          {% for tag in question.tags %}
-          <a href="{% url 'tag' tag_name=tag|lower %}">{{tag}}</a>
-                    {% endfor %}
+          {% for tag in question.tags.all %}
+             <a href="{% url 'tag' tag_name=tag|lower %}">{{tag}}</a>
+                            {% endfor %}
         </div>
       </div>
     </div>

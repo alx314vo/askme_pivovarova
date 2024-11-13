@@ -1,0 +1,48 @@
+{% extends 'layouts/base.html' %}
+
+{% block style %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/settings.css' %}" />
+{% endblock %}
+
+{% block title %}
+  <div class="title-bar">
+    <h1>Settings</h1>
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div class="settings-container">
+    <h2>Profile Settings</h2>
+
+    <form id="settings-form" method="post">
+
+      <div class="setting-field">
+        <label for="username">Username:</label>
+        <input class="setting-field" type="text" id="username" name="username" value="{{ user.username }}" required>
+      </div>
+
+      <div class="setting-field">
+        <label for="email">Email:</label>
+        <input class="setting-field" type="email" id="email" name="email" value="{{ user.email }}" required>
+      </div>
+
+      <div class="setting-field">
+        <label for="nickname">Nickname:</label>
+        <input class="setting-field" type="text" id="nickname" name="nickname" value="{{ user.nickname }}" required>
+      </div>
+
+      <div class="setting-field">
+        <label for="password">Password:</label>
+        <input class="setting-field" type="password" id="password" name="password" required>
+      </div>
+
+      <div class="setting-field">
+        <label for="avatar">Avatar:</label>
+        <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+      </div>
+
+      <button type="submit" class="save-changes-btn">Save Changes</button>
+    </form>
+  </div>
+{% endblock %}

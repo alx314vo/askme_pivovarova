@@ -115,6 +115,7 @@ h1{
 
 .content {
     display: flex;
+    flex-direction: row;
     gap: 30px;
 }
 
@@ -339,3 +340,9 @@ a {
     padding: 10px 15px; /* Отступы кнопки */
 }
 
+.com_pagination {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}

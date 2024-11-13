@@ -17,11 +17,11 @@
   <div class="content">
     <div class="ask-fields">
       <h3>Login:</h3>
-      <textarea class="login-form-input" type="text"></textarea>
+      <input class="login-form-input" type="text">
       <h3>Password:</h3>
-      <textarea class="password-form-input" type="Password"></textarea>
-      <a href={% url "home" %} class="search-form-button">Log in!</a>
-      <a href={% url "reg" %}>create new account</a>
+      <input class="password-form-input" type="password">
+      <a href="{% url 'home' %}" class="search-form-button">Log in!</a>
+      <a href="{% url 'reg' %}">create new account</a>
     </div>
   </div>
 {% endblock %}

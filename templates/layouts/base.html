@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    {% load static %}
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="{% static "img/why_logo.svg" %}">
     <title>why</title>
-    {% load static %}
+    
     {% block style %}
     {% endblock %}
   </head>
@@ -30,7 +32,7 @@
           <div class="account-content">
             <div class="account-name">A. Pivovarova</div>
             <div class="account-actions">
-              <a href="./">Settings</a>
+              <a href={% url "settings" %}>Settings</a>
               <a href={% url "login" %}>Log out</a>
             </div>
           </div>

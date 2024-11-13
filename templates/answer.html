@@ -17,18 +17,23 @@
       <p class="question-text">{{question.text}}</p>
       <div class="question-tags">
         Tags:
-        {% for tag in question.tags %}
-          <a href="{% url 'tag' tag_name=tag|lower %}">{{tag}}</a>
-                    {% endfor %}
+        {% for tag in question.tags.all %}
+             <a href="{% url 'tag' tag_name=tag|lower %}">{{tag}}</a>
+                            {% endfor %}
       </div>
     </div>
 
     <div class="answers">
       <h3>Answers:</h3>
+      {% if not comments %}
+      <h4>No answers yet :(</h4>
+      {% else %}
+      {% for comment in comments %}
+
       <article class="answer-card">
         <div class="answer-content">
-          <p class="answer-text">I think you should just go for it!</p>
-          <div class="answer-author">- User123</div>
+          <p class="answer-text">{{ comment.text }}</p>
+          <div class="answer-author">{{ comment.user }}</div>
           <div class="answer-rating">
             <button class="like-button">👍</button>
             <span class="rating-count">0</span>
@@ -36,25 +41,13 @@
           </div>
         </div>
       </article>
-      <article class="answer-card">
-        <div class="answer-content">
-          <p class="answer-text">Maybe try asking your cat?</p>
-          <div class="answer-author">- CatLover</div>
-          <div class="answer-rating">
-            <button class="like-button">👍</button>
-            <span class="rating-count">0</span>
-            <button class="dislike-button">👎</button>
-          </div>
-        </div>
-      </article>
+
+      {% endfor %}
+      {% endif %}
     </div>
-    <div class="pagination">
-        <button class="pagebutton">1</button>
-        <button class="pagebutton">2</button>
-        <button class="pagebutton">3</button>
-        <button class="pagebutton">...</button>
-        <button class="pagebutton">10</button>
-      </div>
+
+
+    {% include 'component/com_pagination.html' %}
 
     <div class="new-answer">
       <h3>Your answer:</h3>
