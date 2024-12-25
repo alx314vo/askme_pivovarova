@@ -30,10 +30,17 @@
             <img class="account-image"src="{% static 'img/cat.jpg' %}" alt="image" />
           </div>
           <div class="account-content">
-            <div class="account-name">A. Pivovarova</div>
-            <div class="account-actions">
-              <a href={% url "settings" %}>Settings</a>
-              <a href={% url "login" %}>Log out</a>
+            {% if request.user.is_authenticated %}
+              <p>{{ request.user.username }}</p>
+              <span>
+                <a href="{% url 'settings' %}">settings</a>
+                <a href="/logout">log out</a>
+                <a href="{% url 'logout'%}?continue={{ request.path }}">log out</a>
+              </span>
+              {% else %}
+              <a href="{% url 'login' %}?continue={{ request.path }}">Log in</a>
+              <a href="{% url 'signup' %}">sign up here!!</a>
+              {% endif %}
             </div>
           </div>
         </div>

@@ -12,16 +12,28 @@
 {% endblock %}
 
 {% block content %}
-  <h4 class="error-message">Invalid username or password :(</h4>
-
-  <div class="content">
+  <form action="{% url 'login' %}" method="POST" enctype="application/x-www-form-urlencoded">
+    {% csrf_token %}
     <div class="ask-fields">
       <h3>Login:</h3>
-      <input class="login-form-input" type="text">
+      <label for="username">Login</label>
+      <input class="login-form-input" required value="{{ login }}" type="text" name="username" id="username" />
       <h3>Password:</h3>
-      <input class="password-form-input" type="password">
-      <a href="{% url 'home' %}" class="search-form-button">Log in!</a>
-      <a href="{% url 'reg' %}">create new account</a>
+      <label required for="password">Password</label>
+      <input type="password" name="password" id="password" />
     </div>
-  </div>
+    {% if request.GET.continue %}
+      <input class="password-form-input" type="hidden" name="continue" value="{{ request.GET.continue }}" />
+    {% endif %}
+
+    {% if error %}
+      <div class="error">
+        <h4 class="error-message">Error :( </h4>
+      </div>
+    {% endif %}
+    <button class="search-form-button">Log In</button>
+    <p style="text-align: center; margin-bottom: 0;">
+      not registered yet? <a href="{% url 'reg' %}">create new account</a>
+    </p>
+  </form>
 {% endblock %}

@@ -14,12 +14,17 @@
 
 {% block content %}
   <div class="ask-fields">
+    <form action="{% url 'ask' %}" method="POST" enctype="application/x-www-form-urlencoded">
+      {% csrf_token %}
     <h3>Title:</h3>
-    <textarea class="question-heading-form-input" type="text"></textarea>
+    <textarea required value="{{ title }}" id="title" name="title" class="question-heading-form-input" type="text"></textarea>
     <h3>Text:</h3>
-    <textarea class="question-text-form-input" type="text"></textarea>
+    <textarea  required type="text" name="description" id="description" rows="10" class="question-text-form-input" type="text"></textarea>
     <h3>Tags:</h3>
-    <textarea class="question-tags-form-input" type="text"></textarea>
+    <textarea required value="{{ tags }}" type="text" name="tags" id="tags" class="question-tags-form-input" type="text"></textarea>
+    {% if error %}
+    <h4 class="error-message">Error :( </h4>
+              {% endif %}
     <button class="search-form-button">Ask!</button>
   </div>
 {% endblock %}

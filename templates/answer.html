@@ -30,7 +30,7 @@
       {% else %}
       {% for comment in comments %}
 
-      <article class="answer-card">
+      <article class="answer-card" >
         <div class="answer-content">
           <p class="answer-text">{{ comment.text }}</p>
           <div class="answer-author">{{ comment.user }}</div>
@@ -51,8 +51,12 @@
 
     <div class="new-answer">
       <h3>Your answer:</h3>
-      <textarea class="new-answer-input" placeholder="Type your answer here..."></textarea>
-      
+      <form style="width: 100%;" action="{% url 'question' question.id %}" method="POST" enctype="application/x-www-form-urlencoded">
+        {% csrf_token %}
+        <textarea required name="content" rows="5"class="new-answer-input" placeholder="Type your answer here..."></textarea>
+        <button class="answer-button">Answer!</button>
+
+    </form>
     </div>
     <button class="submit-answer-button">Send</button>
   </div>

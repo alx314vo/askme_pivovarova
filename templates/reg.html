@@ -15,20 +15,24 @@
         <h4 class="error-message">Username is already taken :( </h4>
 
         <div class="content">
+          <form action="{% url 'reg' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
             <div class="ask-fields">
-                <h3>Login:</h3>
-                <input class="login-form-input" type="text">
+                <h3>Login:</h3>\
+                <input class="login-form-input" required value="{{ login }}" name="username" type="text" id="username">
                 <h3>Email:</h3>
-                <input class="login-form-input" type="email">
-                <h3>Nickname:</h3>
-                <input class="login-form-input" type="text">
+                <input required value="{{ email }}" name="email" type="email" id="email">
                 <h3>Password:</h3>
-                <input class="password-form-input" type="password">
+                <input class="password-form-input" required name="password" type="password" id="password">
                 <h3>Repeat password:</h3>
-                <input class="password-form-input" type="password">
+                <input required name="password_confirm" type="password" id="password_confirm">
                 <h3>Upload avatar:</h3>
                 <input class="input-photo" type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
                 
+                {% if error %}
+                <h4 class="error-message">Error :( </h4>
+                {% endif %}
+
                 <a href="{% url 'login' %}" class="search-form-button">Reg!</a>
                 <a href="{% url 'login' %}>log in</a>
             </div>
